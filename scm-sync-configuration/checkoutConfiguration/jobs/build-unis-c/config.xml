@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>Build and rpm-ify unis</description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.scm.NullSCM"/>
@@ -19,12 +19,13 @@
 [ -e jenkins-publish-rpm.sh ] || curl -o jenkins-publish-rpm.sh https://github.com/spohnan/jenkins-rpm-publish/raw/master/SOURCES/jenkins-rpm-publish/usr/local/bin/jenkins-publish-rpm.sh
 
 cd libunis-c
-[ -e Makefile ] &amp;amp;&amp;amp; make clean
+[ -e Makefile ] &amp;&amp; make clean
 rm -f Makefile
 ./configure --prefix=`pwd`/../local
 make
 make install
 cd ..
+
 
 RPM_VERSIONS_TO_KEEP=3
 RPM_REPO_BASE=/var/www/html/repos/centos/6/custom
