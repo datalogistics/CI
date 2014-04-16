@@ -20,20 +20,7 @@
   <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
   <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
   <clouds/>
-  <slaves>
-    <slave>
-      <name>centos65-2</name>
-      <description>centos65 node</description>
-      <remoteFS>/tmp</remoteFS>
-      <numExecutors>2</numExecutors>
-      <mode>NORMAL</mode>
-      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
-      <launcher class="hudson.slaves.JNLPLauncher"/>
-      <label>centos65</label>
-      <nodeProperties/>
-      <userId>anonymous</userId>
-    </slave>
-  </slaves>
+  <slaves/>
   <quietPeriod>5</quietPeriod>
   <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
   <views>
