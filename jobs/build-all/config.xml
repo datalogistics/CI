@@ -26,7 +26,10 @@
 
 mkdir -p BUILD RPMS SOURCES SPECS SRPMS
 rm -rf SRPMS/*
-tar --exclude .git -czf SOURCES/ibp_server.tar.gz /vagrant_data/ibp_server
+TARGET=`pwd`/SOURCES/ibp_server.tar.gz
+pushd /vagrant_data
+tar --exclude .git -czf $TARGET ibp_server
+popd
 tar --exclude .git -czf SOURCES/libunis-c.tar.gz libunis-c
 cp libxsp.tgz SOURCES/libxsp-1.0.tar.gz
 
