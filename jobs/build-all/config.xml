@@ -29,7 +29,7 @@ rpmbuild \
     --define &quot;release `date +%Y%m%d%H%M%S`&quot; \
     -bs /vagrant_data/RPM/*.spec
 
-sudo yum-builddep SRPMS/*
+sudo yum install -y `grep BuildRequires RPM/* | awk &apos;{ $1=&quot;&quot;; print }&apos; | xargs echo `
 
 RPM_VERSIONS_TO_KEEP=3
 RPM_REPO_BASE=/var/www/html/repos/centos/6/custom
