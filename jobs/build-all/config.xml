@@ -16,6 +16,8 @@
       <command>[ -e libunis-c ] || git clone https://github.com/periscope-ps/libunis-c.git
 [ -e toolkit ] || git clone https://github.com/datalogistics/toolkit.git
 [ -e ibp_server ] || git clone https://github.com/datalogistics/ibp_server.git
+[ -e xsp.tgz ] || wget http://damsl.cs.indiana.edu/yum/xsp.tgz
+[ -e xsp ] || tar -xvzf http://damsl.cs.indiana.edu/yum/xsp.tgz
 
 [ -e jenkins-publish-rpm.sh ] || curl -o jenkins-publish-rpm.sh https://github.com/spohnan/jenkins-rpm-publish/raw/master/SOURCES/jenkins-rpm-publish/usr/local/bin/jenkins-publish-rpm.sh
 
