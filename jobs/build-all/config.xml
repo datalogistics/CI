@@ -30,7 +30,7 @@ tar --exclude .git -czf SOURCES/ibp_server.tar.gz /vagrant_data/ibp_server
 tar --exclude .git -czf SOURCES/libunis-c.tar.gz libunis-c
 cp libxsp.tgz SOURCES/libxsp-1.0.tar.gz
 
-sudo yum install -y `grep BuildRequires /vagrant_data/RPM/* | awk &apos;{ $1=&quot;&quot;; print }&apos; | xargs echo `
+sudo yum install -y `grep BuildRequires /vagrant_data/RPM/* | awk &apos;{ $1=&quot;&quot;; print }&apos; | tr &apos;,&apos; &apos; &apos; | xargs echo `
 
 BUILD_ORDER=&quot;libxsp accre-ibp-server-phoebus dlt&quot;
 
