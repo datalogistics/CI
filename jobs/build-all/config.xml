@@ -21,15 +21,15 @@
 
 mkdir -p BUILD RPMS SOURCES SPECS SRPMS
 rm -rf SRPMS/*
-tar -cvzf SOURCES/ibp_server.tar.gz ibp_server
-tar -cvzf SOURCES/libunis-c.tar.gz libunis-c
+tar --exclude .git -cvzf SOURCES/ibp_server.tar.gz ibp_server
+tar --exclude .git -cvzf SOURCES/libunis-c.tar.gz libunis-c
+
+sudo yum install -y `grep BuildRequires /vagrant_data/RPM/* | awk &apos;{ $1=&quot;&quot;; print }&apos; | xargs echo `
 
 rpmbuild \
     --define &quot;_topdir `pwd`&quot; \
     --define &quot;release `date +%Y%m%d%H%M%S`&quot; \
-    -bs /vagrant_data/RPM/*.spec
-
-sudo yum install -y `grep BuildRequires /vagrant_data/RPM/* | awk &apos;{ $1=&quot;&quot;; print }&apos; | xargs echo `
+    -ba /vagrant_data/RPM/*.spec
 
 RPM_VERSIONS_TO_KEEP=3
 RPM_REPO_BASE=/var/www/html/repos/centos/6/custom
