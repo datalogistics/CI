@@ -20,6 +20,7 @@
 [ -e jenkins-publish-rpm.sh ] || curl -o jenkins-publish-rpm.sh https://github.com/spohnan/jenkins-rpm-publish/raw/master/SOURCES/jenkins-rpm-publish/usr/local/bin/jenkins-publish-rpm.sh
 
 mkdir -p BUILD RPMS SOURCES SPECS SRPMS
+tar -cvzf SOURCES/ibp_server.tar.gz ibp_server
 
 rpmbuild \
     --define &quot;_topdir `pwd`&quot; \
