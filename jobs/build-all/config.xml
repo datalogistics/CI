@@ -15,16 +15,16 @@
     <hudson.tasks.Shell>
       <command>[ -e libunis-c ] || git clone https://github.com/periscope-ps/libunis-c.git
 [ -e toolkit ] || git clone https://github.com/datalogistics/toolkit.git
-[ -e jenkins-build-rpm.sh ] || curl -o jenkins-build-rpm.sh https://github.com/spohnan/jenkins-rpm-build/raw/master/SOURCES/jenkins-rpm-build/usr/local/bin/jenkins-build-rpm.sh
+[ -e ibp_server ] || https://github.com/datalogistics/ibp_server.git
+
 [ -e jenkins-publish-rpm.sh ] || curl -o jenkins-publish-rpm.sh https://github.com/spohnan/jenkins-rpm-publish/raw/master/SOURCES/jenkins-rpm-publish/usr/local/bin/jenkins-publish-rpm.sh
 
-cd libunis-c
-[ -e Makefile ] &amp;amp;&amp;amp; make clean
-rm -f Makefile
-./configure --prefix=`pwd`/../local
-make
-make install
-cd ..
+mkdir -p BUILD RPMS SOURCES SPECS SRPMS
+
+rpmbuild \
+    --define &quot;_topdir $PROJECT_WORKSPACE&quot; \
+    --define &quot;release `date +%Y%m%d%H%M%S`&quot; \
+    -ba SPECS/*.spec
 
 RPM_VERSIONS_TO_KEEP=3
 RPM_REPO_BASE=/var/www/html/repos/centos/6/custom
