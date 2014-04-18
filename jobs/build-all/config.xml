@@ -21,15 +21,24 @@
 
 mkdir -p BUILD RPMS SOURCES SPECS SRPMS
 rm -rf SRPMS/*
-tar --exclude .git -cvzf SOURCES/ibp_server.tar.gz ibp_server
+tar --exclude .git -cvzf SOURCES/ibp_server.tar.gz /vagrant_data/ibp_server
 tar --exclude .git -cvzf SOURCES/libunis-c.tar.gz libunis-c
 
 sudo yum install -y `grep BuildRequires /vagrant_data/RPM/* | awk &apos;{ $1=&quot;&quot;; print }&apos; | xargs echo `
 
-rpmbuild \
-    --define &quot;_topdir `pwd`&quot; \
-    --define &quot;release `date +%Y%m%d%H%M%S`&quot; \
-    -ba /vagrant_data/RPM/*.spec
+BUILD_ORDER=&quot;libunis-c accre-ibp-server-phoebus dlt&quot;
+
+for CURRENT in $BUILD_ORDER; do
+    rpm -e ${CURRENT} || true
+done
+
+for CURRENT in $BUILD_ORDER; do
+    rpmbuild \
+        --define &quot;_topdir `pwd`&quot; \
+        --define &quot;release `date +%Y%m%d%H%M%S`&quot; \
+        -ba /vagrant_data/RPM/${CURRENT}.spec
+    rpm -i RPMS/*/${CURRENT}*
+done
 
 RPM_VERSIONS_TO_KEEP=3
 RPM_REPO_BASE=/var/www/html/repos/centos/6/custom
