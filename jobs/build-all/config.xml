@@ -21,6 +21,7 @@
 
 mkdir -p BUILD RPMS SOURCES SPECS SRPMS
 tar -cvzf SOURCES/ibp_server.tar.gz ibp_server
+tar -cvzf SOURCES/libunis-c.tar.gz libunis-c
 
 rpmbuild \
     --define &quot;_topdir `pwd`&quot; \
