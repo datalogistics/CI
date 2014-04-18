@@ -20,7 +20,7 @@
 [ -e jenkins-publish-rpm.sh ] || curl -o jenkins-publish-rpm.sh https://github.com/spohnan/jenkins-rpm-publish/raw/master/SOURCES/jenkins-rpm-publish/usr/local/bin/jenkins-publish-rpm.sh
 
 mkdir -p BUILD RPMS SOURCES SPECS SRPMS
-
+echo $PROJECT_WORKSPACE
 rpmbuild \
     --define &quot;_topdir $PROJECT_WORKSPACE&quot; \
     --define &quot;release `date +%Y%m%d%H%M%S`&quot; \
