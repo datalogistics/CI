@@ -43,6 +43,9 @@ for CURRENT in $BUILD_ORDER; do
 done
 
 for CURRENT in $BUILD_ORDER; do
+    # hack while this doesn&apos;t build right
+    sudo cp ./workspace/xsp/src/libxsp_client/libxsp_client.a /usr/local/lib/libxsp_client.a
+    sudo cp ./workspace/xsp/src/libxsp_client/libxsp_client.a /usr/lib64/libxsp_client.a
     rpmbuild \
         --define &quot;_topdir `pwd`&quot; \
         --define &quot;release `date +%Y%m%d%H%M%S`&quot; \
