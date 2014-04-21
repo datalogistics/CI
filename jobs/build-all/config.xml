@@ -41,9 +41,9 @@ BUILD_ORDER=&quot;libunis-c libxsp accre-ibp-server-phoebus dlt&quot;
 for CURRENT in $BUILD_ORDER; do
     sudo rpm -e ${CURRENT} || true
 done
-sudo rpm -e --nodeps  libxsp-common || true
-sudo rpm -e --nodeps  libxsp-client || true
-sudo rpm -e --nodeps  libxsp-xspd || true
+sudo rpm -e --nodeps  libxsp-common
+sudo rpm -e --nodeps  libxsp-client
+sudo rpm -e --nodeps  libxsp-xspd
 sudo rpm -e --nodeps  libxsp-xspd libxsp-client libxsp-common libxsp libunis-c libxsp accre-ibp-server-phoebus dlt || true
 
 for CURRENT in $BUILD_ORDER; do
