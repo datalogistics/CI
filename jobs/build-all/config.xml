@@ -48,9 +48,10 @@ sudo rpm -e --nodeps  libxsp-xspd libxsp-client libxsp-common libxsp libunis-c l
 
 for CURRENT in $BUILD_ORDER; do
     # hack while this doesn&apos;t build right
-    ls -lah BUILD/libxsp-1.0/src/libxsp_client/.libs/libxsp_client*
-    sudo cp BUILD/libxsp-1.0/src/libxsp_client/.libs/libxsp_client* /usr/local/lib/ || true
-    sudo cp BUILD/libxsp-1.0/src/libxsp_client/.libs/libxsp_client* /usr/lib64/ || true
+    LIB_PATH=&quot;BUILD/libxsp-1.0/src&quot;
+    ls -lah ${LIB_PATH}/libxsp_client*
+    sudo cp ${LIB_PATH}/libxsp_client* /usr/local/lib/ || true
+    sudo cp ${LIB_PATH}/libxsp_client* /usr/lib64/ || true
     rpmbuild \
         --define &quot;_topdir `pwd`&quot; \
         --define &quot;release `date +%Y%m%d%H%M%S`&quot; \
