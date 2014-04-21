@@ -52,6 +52,9 @@ for CURRENT in $BUILD_ORDER; do
     ls -lah ${LIB_PATH}/libxsp_client*
     sudo cp ${LIB_PATH}/libxsp_client* /usr/local/lib/ || true
     sudo cp ${LIB_PATH}/libxsp_client* /usr/lib64/ || true
+    pushd xsp
+    sudo make install
+    popd
     rpmbuild \
         --define &quot;_topdir `pwd`&quot; \
         --define &quot;release `date +%Y%m%d%H%M%S`&quot; \
