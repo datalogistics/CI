@@ -44,7 +44,7 @@ done
 #sudo rpm -e --nodeps  libxsp-client || true
 #sudo rpm -e --nodeps  libxsp-xspd || true
 #sudo rpm -e --nodeps  libxsp-xspd libxsp-client libxsp-common libxsp 
-sudo rpm -e libunis-c libxsp accre-ibp-server-phoebus dlt || true
+sudo rpm -e libunis-c accre-ibp-server-phoebus dlt || true
 
 for CURRENT in $BUILD_ORDER; do
     # hack while this doesn&apos;t build right
