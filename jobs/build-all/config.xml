@@ -48,10 +48,10 @@ sudo rpm -e --nodeps  libxsp-xspd || true
 
 for CURRENT in $BUILD_ORDER; do
     # hack while this doesn&apos;t build right
-    LIB_PATH=&quot;/usr/local/lib/&quot;
-    ls -lah ${LIB_PATH}/libxsp_client*
-    sudo cp ${LIB_PATH}/libxsp_client* /usr/local/lib/ || true
-    sudo cp ${LIB_PATH}/libxsp_client* /usr/lib64/ || true
+    #LIB_PATH=&quot;/usr/local/lib/&quot;
+    #ls -lah ${LIB_PATH}/libxsp_client*
+    #sudo cp ${LIB_PATH}/libxsp_client* /usr/local/lib/ || true
+    #sudo cp ${LIB_PATH}/libxsp_client* /usr/lib64/ || true
     pushd xsp
     sudo make install
     popd
