@@ -36,15 +36,15 @@ cp libxsp.tgz SOURCES/libxsp-1.0.tar.gz
 sudo yum install -y `grep BuildRequires /vagrant_data/RPM/* | awk &apos;{ $1=&quot;&quot;; print }&apos; | tr &apos;,&apos; &apos; &apos; | xargs echo `
 
 #BUILD_ORDER=&quot;libunis-c libxsp accre-ibp-server-phoebus dlt&quot;
-BUILD_ORDER=&quot;accre-ibp-server-phoebus&quot;
+BUILD_ORDER=&quot;libxsp accre-ibp-server-phoebus&quot;
 
 for CURRENT in $BUILD_ORDER; do
     sudo rpm -e --nodeps ${CURRENT} || true
 done
-#sudo rpm -e --nodeps  libxsp-common || true
-#sudo rpm -e --nodeps  libxsp-client || true
-#sudo rpm -e --nodeps  libxsp-xspd || true
-#sudo rpm -e --nodeps  libxsp-xspd libxsp-client libxsp-common libxsp libunis-c libxsp accre-ibp-server-phoebus dlt || true
+sudo rpm -e --nodeps  libxsp-common || true
+sudo rpm -e --nodeps  libxsp-client || true
+sudo rpm -e --nodeps  libxsp-xspd || true
+sudo rpm -e --nodeps  libxsp-xspd libxsp-client libxsp-common libxsp libunis-c libxsp accre-ibp-server-phoebus dlt || true
 
 for CURRENT in $BUILD_ORDER; do
     # hack while this doesn&apos;t build right
@@ -52,9 +52,9 @@ for CURRENT in $BUILD_ORDER; do
     #ls -lah ${LIB_PATH}/libxsp_client*
     #sudo cp ${LIB_PATH}/libxsp_client* /usr/local/lib/ || true
     #sudo cp ${LIB_PATH}/libxsp_client* /usr/lib64/ || true
-    pushd xsp
-    sudo make install
-    popd
+    #pushd xsp
+    #sudo make install
+    #popd
     rpmbuild \
         --define &quot;_topdir `pwd`&quot; \
         --define &quot;release `date +%Y%m%d%H%M%S`&quot; \
