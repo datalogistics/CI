@@ -69,7 +69,7 @@ RPM_NAME=jenkins-rpm-publish-*.rpm</command>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>RPMS/*,SRPMS/*</artifacts>
+      <artifacts>*RPMS/</artifacts>
       <latestOnly>false</latestOnly>
       <allowEmptyArchive>false</allowEmptyArchive>
     </hudson.tasks.ArtifactArchiver>
