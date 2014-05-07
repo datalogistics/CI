@@ -67,6 +67,12 @@ RPM_REPO_BASE=/var/www/html/repos/centos/6/custom
 RPM_NAME=jenkins-rpm-publish-*.rpm</command>
     </hudson.tasks.Shell>
   </builders>
-  <publishers/>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>RPMS/*,SRPMS/*</artifacts>
+      <latestOnly>false</latestOnly>
+      <allowEmptyArchive>false</allowEmptyArchive>
+    </hudson.tasks.ArtifactArchiver>
+  </publishers>
   <buildWrappers/>
 </project>
