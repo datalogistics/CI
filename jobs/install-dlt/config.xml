@@ -23,14 +23,7 @@
     </hudson.plugins.copyartifact.CopyArtifact>
     <hudson.tasks.Shell>
       <command>sudo yum install createrepo
-createrepo $(pwd)
-sudo bash -c &apos;cat &lt;&lt; EOF &gt; /etc/yum.repos.d/dlt.repo
-[customrepo]
-name=Custom Repository
-baseurl=file://$(pwd)
-enabled=1
-gpgcheck=0
-EOF&apos;</command>
+createrepo .</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
