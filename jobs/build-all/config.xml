@@ -24,6 +24,7 @@
 
 [ -e jenkins-publish-rpm.sh ] || curl -o jenkins-publish-rpm.sh https://github.com/spohnan/jenkins-rpm-publish/raw/master/SOURCES/jenkins-rpm-publish/usr/local/bin/jenkins-publish-rpm.sh
 
+rm -rf RPMS SRPMS
 mkdir -p BUILD RPMS SOURCES SPECS SRPMS
 TARGET=`pwd`/SOURCES/ibp_server.tar.gz
 pushd /vagrant_data
