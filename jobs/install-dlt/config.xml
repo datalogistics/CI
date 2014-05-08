@@ -31,7 +31,7 @@ baseurl=file://$(pwd)
 enabled=1
 gpgcheck=0
 EOF&apos;
-sudo yum install dlt</command>
+sudo yum install -y dlt</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
