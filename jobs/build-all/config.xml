@@ -47,6 +47,7 @@ done
 #sudo rpm -e --nodeps  libxsp-xspd libxsp-client libxsp-common libxsp 
 sudo rpm -e libunis-c accre-ibp-server-phoebus dlt || true
 
+RELEASE_TIME=$(date +%Y%m%d%H%M%S)
 for CURRENT in $BUILD_ORDER; do
     # hack while this doesn&apos;t build right
     #LIB_PATH=&quot;/usr/local/lib/&quot;
@@ -58,7 +59,7 @@ for CURRENT in $BUILD_ORDER; do
     #popd
     rpmbuild \
         --define &quot;_topdir `pwd`&quot; \
-        --define &quot;release `date +%Y%m%d%H%M%S`&quot; \
+        --define &quot;release ${RELEASE_TIME}&quot; \
         -ba /vagrant_data/RPM/${CURRENT}.spec
     # sudo rpm -i `ls RPMS/*/${CURRENT}* | grep -v debuginfo`
 done
