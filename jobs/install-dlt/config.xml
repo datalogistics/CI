@@ -31,7 +31,14 @@ baseurl=file://$(pwd)
 enabled=1
 gpgcheck=0
 EOF&apos;
-sudo yum install -y dlt</command>
+sudo yum install -y dlt
+sudo chkconfig ibp-server on
+sudo service ibp-server start
+if [[ $? -eq 0 ]]; then
+    echo &quot;There should be no RIDs in IBP.cfg&quot;
+    exit 1
+fi
+</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
