@@ -38,14 +38,14 @@ sudo yum install -y `grep BuildRequires /vagrant_data/RPM/* | awk &apos;{ $1=&qu
 BUILD_ORDER=&quot;libunis-c libxsp accre-ibp-server dlt&quot;
 #BUILD_ORDER=&quot;accre-ibp-server&quot;
 
-#for CURRENT in $BUILD_ORDER; do
-#    sudo rpm -e --nodeps ${CURRENT} || true
-#done
+for CURRENT in $BUILD_ORDER; do
+    sudo rpm -e --nodeps ${CURRENT} || true
+done
 #sudo rpm -e --nodeps  libxsp-common || true
 #sudo rpm -e --nodeps  libxsp-client || true
 #sudo rpm -e --nodeps  libxsp-xspd || true
 #sudo rpm -e --nodeps  libxsp-xspd libxsp-client libxsp-common libxsp 
-#sudo rpm -e libunis-c accre-ibp-server-phoebus dlt || true
+sudo rpm -e libunis-c accre-ibp-server dlt || true
 
 RELEASE_TIME=$(date +%Y%m%d%H%M%S)
 for CURRENT in $BUILD_ORDER; do
@@ -61,7 +61,7 @@ for CURRENT in $BUILD_ORDER; do
         --define &quot;_topdir `pwd`&quot; \
         --define &quot;release ${RELEASE_TIME}&quot; \
         -ba /vagrant_data/RPM/${CURRENT}.spec
-    # sudo rpm -i `ls RPMS/*/${CURRENT}* | grep -v debuginfo`
+    sudo rpm -i `ls RPMS/*/${CURRENT}* | grep -v debuginfo`
 done
 
 RPM_VERSIONS_TO_KEEP=3
