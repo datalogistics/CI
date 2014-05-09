@@ -17,7 +17,7 @@
 [ -e toolkit ] || git clone https://github.com/datalogistics/toolkit.git
 [ -e ibp_server ] || git clone https://github.com/datalogistics/ibp_server.git
 # :(
-rm -rf xsp.tgz xsp libxsp-1.0 libxsp.tgz 
+#rm -rf xsp.tgz xsp libxsp-1.0 libxsp.tgz 
 [ -e xsp.tgz ] || wget http://damsl.cs.indiana.edu/yum/xsp.tgz
 [ -e xsp ] || tar -xvf xsp.tgz
 [ -e libxsp-1.0 ] || cp -a xsp libxsp-1.0
